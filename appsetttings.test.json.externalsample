@@ -1,0 +1,6 @@
+{
+  "PolygonTestSettings": {
+    "Client": "External",
+    "HttpUrl": "http://localhost:3000"
+  }
+}
