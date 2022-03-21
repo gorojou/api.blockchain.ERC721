@@ -98,31 +98,31 @@ namespace WebApiMyGalleryPolygon.Controllers
             return result.AccessToken;
         }
 
-        [HttpGet("createWallet")]
-        public string  createWallet()
+        [HttpGet("createWallet/{userId}")]
+        public string  createWallet( string userId)
         {
             
-            //string Words = "ripple scissors kick mammal hire column oak again sun offer wealth tomorrow wagon turn fatal";
-            //string Password1 = "password";
+       /*     string Words = "ripple scissors kick mammal hire column oak again sun offer wealth tomorrow wagon turn fatal";
+            string Password1 = "password";
            
-           // var wallet1 = new Wallet(Words, Password1);
-            //for (int i = 0; i < 10; i++)
-           // {
-                  //var account = wallet1.GetAccount(0); 
+            var wallet1 = new Nethereum.HdWallet.Wallet(Words, Password1);
+            for (int i = 0; i < 10; i++)
+            {
+                  var account = wallet1.GetAccount(0); 
              //    Console.WriteLine("Account index : "+ i +" - Address : "+ account.Address +" - Private key : "+ account.PrivateKey);
-            //}
+            }
            
-           //return wallet1.GetAccount(0).ToString();
-
-           KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(GetToken));
+           return wallet1.GetAccount(0).ToString();
+*/
+         //  KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(GetToken));
            
 
             
-           AzureKeyVaultExternalSigner keyVault = new AzureKeyVaultExternalSigner(keyVaultClient, BASESECRETURI);
+          // AzureKeyVaultExternalSigner keyVault = new AzureKeyVaultExternalSigner(keyVaultClient, BASESECRETURI);
 
 
-           DefaultAzureCredential defaultAzure = new DefaultAzureCredential();
-           
+          // DefaultAzureCredential defaultAzure = new DefaultAzureCredential();
+             
            
            string password = "strongpassword";
 
@@ -134,9 +134,9 @@ namespace WebApiMyGalleryPolygon.Controllers
 
             var credential = new DefaultAzureCredential();
         
-            
+      /*      
            
-        /*    var client = new KeyClient(new Uri(BASESECRETURI), new DefaultAzureCredential());
+         var client = new KeyClient(new Uri(BASESECRETURI), new DefaultAzureCredential());
             string rsaKeyName = $"MyGalleryKey-{Guid.NewGuid()}";
             
             var rsaKey = new CreateRsaKeyOptions(rsaKeyName, hardwareProtected: false)
@@ -146,8 +146,8 @@ namespace WebApiMyGalleryPolygon.Controllers
             };
 
             client.CreateRsaKey(rsaKey);
-     */
-
+     
+*/
             string json = keyStore.EncryptAndGenerateKeyStoreAsJson(
                 password: password,
                 privateKey: privateKey,
@@ -156,7 +156,7 @@ namespace WebApiMyGalleryPolygon.Controllers
              
 ;
             
-             keyVault.SignAsync(privateKey).ConfigureAwait(false);
+             //keyVault.SignAsync(privateKey).ConfigureAwait(false);
 
              
 
@@ -165,114 +165,28 @@ namespace WebApiMyGalleryPolygon.Controllers
         
         }
 
-        [HttpPost("addNFT")]
-        
-        public async Task<IActionResult> addNFT()
+      [HttpPost("addNFT/{cardId}")]
+        public IActionResult addNFT(string cardId)
         {
-            var url = $"https://polygon-mumbai.infura.io/v3/46d94a2d40114cbaad5a51ab07d02737";
-               
-              var request = (HttpWebRequest)WebRequest.Create(url);
-                request.Method = "POST";
-                request.ContentType = "application/json";
-                request.Accept = "application/json";
-                request.Headers.Add(HttpRequestHeader.Authorization, "Basic " + Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes("igor.miquilena@gmail.com:imiquilena")));
-                request.PreAuthenticate = true;
-                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml");
-                request.Headers.Add("Accept-Encoding", "gzip, deflate");
-                request.Headers.Add("x-nhia-apikey","b4dfa941a2c84793b22935183f0f01a4");
-                request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0");
-                request.Headers.Add("Accept-Charset", "ISO-8859-1");
-                request.Credentials = new NetworkCredential() {
-                UserName = "igor.miquilena@gmail.com",
-                Password = "imiquilena"
-               
-                };
-                
-             // request.UserAgent = "curl";
-request.Accept = "*/*";
-//System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 
-//System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls | SecurityProtocolType.Ssl3;
-  //System.Net.ServicePointManager.SecurityProtocol |= 
-    //SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;   
-    ServicePointManager.SecurityProtocol = (SecurityProtocolType)192 |
-(SecurityProtocolType)768 | (SecurityProtocolType)3072;     
-
-               
-                 try
-                    {
-                        var handler = new HttpClientHandler();
-
-                        handler.ServerCertificateCustomValidationCallback += 
-                                       (sender, certificate, chain, errors) =>
-                                        {
-                                            return true;
-                                        };
-                        var web3 = new Web3("https://polygon-mumbai.infura.io/v3/46d94a2d40114cbaad5a51ab07d02737");
-                        
-                       // var balance = await web3.Eth.GetBalance.SendRequestAsync("0x00BDa32084AB0190897b3B71f07BCd649f906bDb").ConfigureAwait(false);
-                      //  var privateKey = "bb0dd811e80a5a6fbd996020cecacbdb810b20b3839a7a372112378a95ae6dff";
-                    //    var account = new Account(privateKey);    
-                   //    var networkId = await web3.Net.Version.SendRequestAsync();
-                 //  var senderAddress = "0x12890d2cce102216644c59daE5baed380d84830c";
-                 var password = "imiquilena";
-
-                //var accountman = new ManagedAccount(senderAddress, password);
-               // var web3Account = new Web3(account);
-                       var toAddress = "0xEd84a6761ab9da64316D28D01C2b8e4f19eB1049";
-var senderAddress = "0x00BDa32084AB0190897b3B71f07BCd649f906bDb";
-
-var account = new ManagedAccount(senderAddress, password);
- //web3 = new Nethereum.Web3.Web3(account, "http://127.0.0.1:8545");
-
-                       //var transaction = await web3.TransactionManager.SendTransactionAsync(account.Address, toAddress, new Nethereum.Hex.HexTypes.HexBigInteger(1));
-              
-              var unlocked = web3.Personal.UnlockAccount;
-             // var prueba =  await web3.Personal.UnlockAccount.SendRequestAsync(senderAddress,password,new Nethereum.Hex.HexTypes.HexBigInteger(1)); 
-               var receipt =  web3.Eth.Transactions.GetTransactionReceipt.SendRequestAsync("0x2e8983b5225a9c01464d75db65cab9dd0f4b28b15d093938ef4851d90183ed9b").Result;
-        Console.WriteLine($"Status: {receipt.Status}");
-               var prueba = await web3.Eth.ProtocolVersion.SendRequestAsync();
-               
-               
-                        using (WebResponse response = request.GetResponse())
-                        {
-                            PolygonClientIntegrationFixture polygon = new PolygonClientIntegrationFixture();
+            PolygonClientIntegrationFixture polygon = new PolygonClientIntegrationFixture();
            
-                            var eRC = new ERC721PresetMinterPauserAutoIdImpl(polygon);
+            
+            
+            var eRC = new ERC721PresetMinterPauserAutoIdImpl(polygon);
 
-                            eRC.ShouldDeployAndMintNFTToken();
-
-                            using (Stream strReader = response.GetResponseStream())
-                            {
-                                if (strReader == null) //return;
-                                using (StreamReader objReader = new StreamReader(strReader))
-                                {
-                                string responseBody = objReader.ReadToEnd();
-                                // Do something with responseBody
-                                
-                                Console.WriteLine(responseBody);
-                                
-                               }
-                            }
-                        }
-                    }
-                    catch (WebException ex)
-                    {
-                        return StatusCode(400);
-                    }
-         
+            eRC.ShouldDeployAndMintNFTToken();
          
             if (ModelState.IsValid)
             {
                 return StatusCode(200);
             }
-           
-           return StatusCode(400);
-            
+
+            return StatusCode(400);
         }
 
-       [HttpPost("transferNFT/{model}")]
-        public IActionResult transferNFT(Cards model)
+       [HttpPost("transferNFT/{userId}/{addressfrom}/{addressto}")]
+        public IActionResult transferNFT(string userId, string addressfrom, string addressto)
         {
 
 
@@ -289,8 +203,10 @@ var account = new ManagedAccount(senderAddress, password);
              Gas = 2100,
              Nonce = 2,
              GasPrice = Nethereum.Web3.Web3.Convert.ToWei(25, UnitConversion.EthUnit.Gwei),
-             To = "0xEd84a6761ab9da64316D28D01C2b8e4f19eB1049",
-             TokenId = model.Idnft};
+             To = "0xEd84a6761ab9da64316D28D01C2b8e4f19eB1049"//,
+             //TokenId = model.Idnft
+             
+             };
 
             
 

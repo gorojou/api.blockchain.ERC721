@@ -1,0 +1,121 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/usuario/Escritorio/my.gallery-api-blockchain/my.gallery-api-blockchain/WebApiMyGalleryPolygon.csproj": {}
+  },
+  "projects": {
+    "/home/usuario/Escritorio/my.gallery-api-blockchain/my.gallery-api-blockchain/WebApiMyGalleryPolygon.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/usuario/Escritorio/my.gallery-api-blockchain/my.gallery-api-blockchain/WebApiMyGalleryPolygon.csproj",
+        "projectName": "WebApiMyGalleryPolygon",
+        "projectPath": "/home/usuario/Escritorio/my.gallery-api-blockchain/my.gallery-api-blockchain/WebApiMyGalleryPolygon.csproj",
+        "packagesPath": "/home/usuario/.nuget/packages/",
+        "outputPath": "/home/usuario/Escritorio/my.gallery-api-blockchain/my.gallery-api-blockchain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/usuario/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.5.0-beta.3, )"
+            },
+            "Azure.Security.KeyVault.Keys": {
+              "target": "Package",
+              "version": "[4.3.0-beta.1, )"
+            },
+            "Microsoft.Azure.Services.AppAuthentication": {
+              "target": "Package",
+              "version": "[1.6.1, )"
+            },
+            "Microsoft.IdentityModel.Clients.ActiveDirectory": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            },
+            "NBitcoin": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "NBitcoin.Secp256k1": {
+              "target": "Package",
+              "version": "[1.0.10, )"
+            },
+            "Nethereum.HdWallet": {
+              "target": "Package",
+              "version": "[4.0.5, )"
+            },
+            "Nethereum.RPC": {
+              "target": "Package",
+              "version": "[4.0.5, )"
+            },
+            "Nethereum.Signer.AzureKeyVault": {
+              "target": "Package",
+              "version": "[4.0.5, )"
+            },
+            "Nethereum.StandardNonFungibleTokenERC721": {
+              "target": "Package",
+              "version": "[4.0.5, )"
+            },
+            "Nethereum.StandardTokenEIP20": {
+              "target": "Package",
+              "version": "[4.0.5, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.3.3, )"
+            },
+            "System.Net.Security": {
+              "target": "Package",
+              "version": "[4.3.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.405/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

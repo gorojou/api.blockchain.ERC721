@@ -1,8 +1,11 @@
 using System.Numerics;
 using Nethereum.Signer;
 using Nethereum.Util;
-using Nethereum.Web3.Accounts;
+using NBitcoin;
 using Nethereum.Web3;
+using Nethereum.Web3.Accounts; 
+using Nethereum.Hex.HexConvertors.Extensions; 
+using Nethereum.HdWallet;
 using Nethereum.Contracts;
 using Nethereum.RPC.Eth.DTOs;
 using System.Threading.Tasks;
@@ -33,18 +36,29 @@ namespace WebApiMyGalleryPolygon.ContractsLibrary.ContractsImpl
             var web3 = _polygonClientIntegrationFixture.GetInfuraWeb3(InfuraPolygon.Polygon, InfuraNetwork.Mumbai);
             //var web3 = _ethereumClientIntegrationFixture.GetWeb3();
 
+/*
+Mnemonic mnemo = new Mnemonic(Wordlist.English, WordCount.Twelve);
+string Password1 = "password";
+var wallet1 = new Nethereum.HdWallet.Wallet(mnemo.ToString(), Password1);
+for (int i = 0; i < 10; i++)
+{
+    var account = wallet1.GetAccount(i,null); 
+
+}
+ */   
             
             var erc721PresetMinter = new ERC721PresetMinterPauserAutoIdDeployment() {
-                BaseURI = "gorojou/demo", 
+                BaseURI = "gorojou/demo",
+                //BaseURI = "https://my-json-server.typicode.com/juanfranblanco/samplenftdb/tokens/", 
                 Name = "NFTArt", 
                 Symbol = "NFA",
-                Gas = 2100,
+                Gas = 5100,
                 Nonce = 2,
                 GasPrice = Nethereum.Web3.Web3.Convert.ToWei(25, UnitConversion.EthUnit.Gwei),
                 FromAddress ="0x00BDa32084AB0190897b3B71f07BCd649f906bDb",
-                AmountToSend = 00001
+                AmountToSend = 00001};
                 
-                };
+                
 
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
              
