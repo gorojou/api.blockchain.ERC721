@@ -31,6 +31,7 @@ using System.Net;
 using System.IO;
 using Nethereum.RPC;
 using Nethereum.Web3.Accounts.Managed;
+using System.Text;
 
 namespace WebApiMyGalleryPolygon.Controllers
 {
@@ -43,8 +44,6 @@ namespace WebApiMyGalleryPolygon.Controllers
     {
       
        
-
-      // const string BASESECRETURI = "https://mygallerykeyvault.vault.azure.net/keys/myGalleryKeyTes/c5b1c3b7f69346698d9da5b43fecd818";
        private readonly ILogger<ApiController> _logger;
         
 
@@ -60,8 +59,9 @@ namespace WebApiMyGalleryPolygon.Controllers
         public static string APP_ID= "37a24f97-0b68-4d78-baf9-038224b644ec";
         public static string APP_PASSWORD = "P3RpF4Ux2KHX9aoMAk4tUJtn8A5bAECCo/OmnwyeIW8=";
         public static string TENANTID = "6a3ee749-b708-41fa-8aba-46beca6fa849"; 
-        public static string BASESECRETURI = "https://mygallerykeyvault.vault.azure.net/"; 
-         
+        public static string BASESECRETURI = "https://ukeyvault-test.vault.azure.net/";
+       
+        
 
         public ApiController(ILogger<ApiController> logger)
         {
@@ -102,66 +102,66 @@ namespace WebApiMyGalleryPolygon.Controllers
         public string  createWallet( string userId)
         {
             
-       /*     string Words = "ripple scissors kick mammal hire column oak again sun offer wealth tomorrow wagon turn fatal";
+            Mnemonic mnemo = new Mnemonic(Wordlist.English, WordCount.Twelve);
+            string Words = mnemo.ToString();
             string Password1 = "password";
            
             var wallet1 = new Nethereum.HdWallet.Wallet(Words, Password1);
-            for (int i = 0; i < 10; i++)
-            {
-                  var account = wallet1.GetAccount(0); 
-             //    Console.WriteLine("Account index : "+ i +" - Address : "+ account.Address +" - Private key : "+ account.PrivateKey);
-            }
+            
+            
            
-           return wallet1.GetAccount(0).ToString();
-*/
-         //  KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(GetToken));
+          
+          KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(GetToken));
            
 
             
-          // AzureKeyVaultExternalSigner keyVault = new AzureKeyVaultExternalSigner(keyVaultClient, BASESECRETURI);
+          AzureKeyVaultExternalSigner keyVault = new AzureKeyVaultExternalSigner(keyVaultClient, BASESECRETURI);
 
 
-          // DefaultAzureCredential defaultAzure = new DefaultAzureCredential();
-             
+           DefaultAzureCredential defaultAzure = new DefaultAzureCredential();
+
+            /*  
+              string password = "strongpassword";
+
+               EthECKey key = EthECKey.GenerateKey();
+               byte[] privateKey = key.GetPrivateKeyAsBytes();
+               string address = key.GetPublicAddress();
+              
+
+
+               var credential = new DefaultAzureCredential();
+               */
+
            
-           string password = "strongpassword";
-
-            EthECKey key = EthECKey.GenerateKey();
-            byte[] privateKey = key.GetPrivateKeyAsBytes();
-            string address = key.GetPublicAddress();
-            var keyStore = new KeyStoreScryptService();
-
-
-            var credential = new DefaultAzureCredential();
-        
-      /*      
-           
+         var keyStore = new KeyStoreScryptService();
          var client = new KeyClient(new Uri(BASESECRETURI), new DefaultAzureCredential());
-            string rsaKeyName = $"MyGalleryKey-{Guid.NewGuid()}";
             
+          //  string rsaKeyName = $"my.gallery{}";
+            var cuenta = wallet1.GetAccount(0).Address;
+            var prvkey = wallet1.GetAccount(0).PrivateKey;
+            byte[] bytesprvk = Encoding.ASCII.GetBytes(prvkey);
+             var jsonweb = new
+            {
+            addresss=  cuenta,
+            privateKey = prvkey,
+            password  = Words
+            };
+
+
+            string rsaKeyName = $"mygallerykey-{jsonweb}";
+
             var rsaKey = new CreateRsaKeyOptions(rsaKeyName, hardwareProtected: false)
             {
                 KeySize = 2048,
-                ExpiresOn = DateTimeOffset.Now.AddYears(1)
-            };
-
-            client.CreateRsaKey(rsaKey);
-     
-*/
-            string json = keyStore.EncryptAndGenerateKeyStoreAsJson(
-                password: password,
-                privateKey: privateKey,
-                addresss: address);
-            
-             
-;
-            
-             //keyVault.SignAsync(privateKey).ConfigureAwait(false);
-
-             
-
-            return address;
-        
+                ExpiresOn = DateTimeOffset.Now.AddYears(1),
+              
+           };
+           
+          
+  
+          
+       return jsonweb.ToString();
+      
         
         }
 

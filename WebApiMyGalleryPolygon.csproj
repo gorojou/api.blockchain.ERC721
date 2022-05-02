@@ -4,13 +4,13 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.2.9" />
-    <PackageReference Include="NBitcoin" Version="6.0.8" />
+    <PackageReference Include="NBitcoin" Version="7.0.7" />
     <PackageReference Include="NBitcoin.Secp256k1" Version="1.0.10" />
     <PackageReference Include="Nethereum.StandardNonFungibleTokenERC721" Version="4.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.3" />
-    <PackageReference Include="Nethereum.RPC" Version="4.0.5" />
+    <PackageReference Include="Nethereum.RPC" Version="4.4.1" />
     <PackageReference Include="Nethereum.StandardTokenEIP20" Version="4.0.5" />
-    <PackageReference Include="Nethereum.HdWallet" Version="4.0.5" />
+    <PackageReference Include="Nethereum.HdWallet" Version="4.4.1" />
     <PackageReference Include="Nethereum.Signer.AzureKeyVault" Version="4.0.5" />
     <PackageReference Include="Azure.Identity" Version="1.5.0-beta.3" />
     <PackageReference Include="Azure.Security.KeyVault.Keys" Version="4.3.0-beta.1" />
